@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://b52kmyyta0dqo"]
+[gd_scene load_steps=2 format=3 uid="uid://cx7xaiwtga13v"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://dqmto10j825st" path="res://Characters/player_wanderer.tscn" id="1_8qpe6"]
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="Main" type="Node2D"]
+
+[node name="PlayerWanderer" parent="." instance=ExtResource("1_8qpe6")]
+position = Vector2(174, 403)
