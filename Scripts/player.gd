@@ -4,6 +4,10 @@ const speed = 100
 # Animate player
 var current_dir = "none" #start off going no dir
 
+#enable movement on start of game
+func _ready():
+	$AnimatedSprite2D.play("front_idle")
+
 func _physics_process(delta):
 	player_movement(delta)  # Call the player mvmt f(x) below
 	
@@ -11,7 +15,7 @@ func player_movement(delta):
 	
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "right"  #add current dir variable to each dir
-		play_anim(1)  #call animation f(x0 defined below - 1 means moving
+		play_anim(1)  #call animation f(x) defined below - 1 means is moving
 		velocity.x = speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_left"):

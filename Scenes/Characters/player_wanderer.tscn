@@ -1,13 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqmto10j825st"]
 
-[ext_resource type="Script" path="res://Characters/player_wanderer.gd" id="1_6p14a"]
+[ext_resource type="Script" path="res://Scenes/Characters/player_wanderer.gd" id="1_6p14a"]
 [ext_resource type="Texture2D" uid="uid://cphh2ch4ci2i5" path="res://Assets/EPIC RPG World Pack - [FREE Demo]Ancient Ruins - Copia/Characters/NPC merchant - with animated items/NPC Merchant-idle.png" id="1_pe33f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnqot"]
 size = Vector2(37, 24)
-
-[sub_resource type="Animation" id="Animation_i0i0w"]
-resource_name = "walk_right"
 
 [sub_resource type="Animation" id="Animation_f5rir"]
 length = 0.001
@@ -40,6 +37,9 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+
+[sub_resource type="Animation" id="Animation_i0i0w"]
+resource_name = "walk_right"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_758v8"]
 _data = {
