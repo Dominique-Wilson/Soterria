@@ -174,4 +174,4 @@ script = ExtResource("1_exfxt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1i82l")
-animation = &"back_walk"
+animation = &"back_idle"
