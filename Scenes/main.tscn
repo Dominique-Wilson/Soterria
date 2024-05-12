@@ -744,4 +744,4 @@ layer_1/name = "bricks"
 layer_1/tile_data = PackedInt32Array()
 
 [node name="player" parent="." instance=ExtResource("6_h3w3c")]
-position = Vector2(22, 21)
+position = Vector2(47, 49)
