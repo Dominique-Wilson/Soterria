@@ -10,6 +10,8 @@ func _ready():
 
 func _physics_process(delta):
 	player_movement(delta)  # Call the player mvmt f(x) below
+	if Input.is_action_just_pressed("attack"):  #one press to attack
+		play_attack()
 	
 func player_movement(delta):
 	
@@ -71,3 +73,5 @@ func play_anim(movement):
 		elif movement == 0:
 			anim.play("back_idle")
 
+func play_attack():   #attack animation
+	$MageBlast.play("orb_blast")
