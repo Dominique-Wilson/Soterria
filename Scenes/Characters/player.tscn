@@ -1,10 +1,13 @@
-[gd_scene load_steps=61 format=3 uid="uid://dcuo5nbs4ymn0"]
+[gd_scene load_steps=62 format=3 uid="uid://dcuo5nbs4ymn0"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_exfxt"]
 [ext_resource type="Texture2D" uid="uid://dm2bgnx2q7hfm" path="res://Assets/PlayerSprites/magef_side_back_idle.png" id="2_p13y0"]
 [ext_resource type="Texture2D" uid="uid://bcxrw1xbgn0u2" path="res://Assets/PlayerSprites/Mage-Idle-Walk.png" id="3_3fbto"]
 [ext_resource type="Texture2D" uid="uid://doqw0mwc4c7r" path="res://Assets/PlayerSprites/magef_fron_idle3.png" id="4_gf75g"]
 [ext_resource type="Texture2D" uid="uid://d1keehylnltcj" path="res://Assets/Attacks/SPRITESHEET_Files/MagicBarrier_64x64.png" id="5_r08uy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqeuh"]
+size = Vector2(15, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nctt5"]
 atlas = ExtResource("3_3fbto")
@@ -327,7 +330,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.1,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oihlu")
 }, {
 "duration": 1.0,
@@ -435,14 +438,19 @@ animations = [{
 script = ExtResource("1_exfxt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -1)
+shape = SubResource("RectangleShape2D_dqeuh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_1i82l")
 animation = &"attack_orb"
-frame_progress = 0.675836
+frame_progress = 0.286427
+offset = Vector2(0, -10)
+
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 
 [node name="MageBlast" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, 2)
 sprite_frames = SubResource("SpriteFrames_fe522")
 animation = &"orb_blast"
 frame = 32
