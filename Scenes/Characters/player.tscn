@@ -445,7 +445,7 @@ shape = SubResource("RectangleShape2D_dqeuh")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_1i82l")
 animation = &"attack_orb"
-frame_progress = 0.286427
+frame_progress = 0.375315
 offset = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
