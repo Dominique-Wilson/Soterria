@@ -435,6 +435,7 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_exfxt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -445,7 +446,7 @@ shape = SubResource("RectangleShape2D_dqeuh")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_1i82l")
 animation = &"attack_orb"
-frame_progress = 0.375315
+frame_progress = 0.478244
 offset = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]

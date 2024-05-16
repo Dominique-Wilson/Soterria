@@ -12,9 +12,13 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 543.0
-offset_top = 171.0
-offset_right = 777.0
-offset_bottom = 266.0
+offset_left = -84.0
+offset_top = -91.0
+offset_right = 150.0
+offset_bottom = 4.0
 text = "New Game"
 script = ExtResource("1_hs0e2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="Button" to="Button" method="buttonpress"]
