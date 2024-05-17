@@ -1,5 +1,13 @@
 extends CharacterBody2D
-const speed = 100
+
+var enemy_inattack_range = false  #if enemy within range
+var enemy_attack_cooldown = true  #quick cool-down period
+var health = 120
+var player_alive = true
+
+var attack_ip = false  #attack in progress
+
+const speed = 120
 
 # Animate player
 var current_dir = "none" #start off going no dir
@@ -10,8 +18,15 @@ func _ready():
 
 func _physics_process(delta):
 	player_movement(delta)  # Call the player mvmt f(x) below
-	if Input.is_action_just_pressed("attack"):  #one press to attack
-		play_attack()
+	enemy_attack()
+	play_attack()
+	
+	if health <= 0:
+		player_alive = false # player diesrespawn or go back to level begin etc
+		health = 0
+		print("player has been killed")
+		self.queue_free()  #delete player
+		
 	
 func player_movement(delta):
 	
@@ -53,25 +68,77 @@ func play_anim(movement):
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
-			anim.play("side_idle")
+			if attack_ip == false:
+				anim.play("side_idle")
 	if dir == "left":
 		anim.flip_h = true  #flip image
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
-			anim.play("side_idle")
+			if attack_ip == false:
+				anim.play("side_idle")
 	if dir == "down":
 		anim.flip_h = true  #don't flip image
 		if movement == 1:
 			anim.play("front_walk")
 		elif movement == 0:
-			anim.play("front_idle")
+			if attack_ip == false:
+				anim.play("front_idle")
 	if dir == "up":
 		anim.flip_h = true  #don't flip image
 		if movement == 1:
 			anim.play("back_walk")
 		elif movement == 0:
-			anim.play("back_idle")
+			if attack_ip == false:
+				anim.play("back_idle")
 
+func player():
+	pass
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
+
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+func enemy_attack():
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		health = health - 20
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print(health)
+
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
+	
 func play_attack():   #attack animation
-	$MageBlast.play("orb_blast")
+	var dir = current_dir
+	
+	if Input.is_action_just_pressed("attack"):  #one press to attack
+		global.player_current_attack = true
+		attack_ip = true
+		if dir == "right":
+			$AnimatedSprite2D.flip_h = false
+			$MageBlast.play("orb_blast")
+			$deal_attack_timer.start()
+		if dir == "left":
+			$AnimatedSprite2D.flip_h = true
+			$MageBlast.play("orb_blast")
+			$deal_attack_timer.start()
+		if dir == "down":
+			$MageBlast.play("orb_blast")
+			$deal_attack_timer.start()
+		if dir == "up":
+			$MageBlast.play("orb_blast")
+			$deal_attack_timer.start()
+
+
+
+func _on_deal_attack_timer_timeout():
+	$deal_attack_timer.stop()
+	global.player_current_attack = false
+	attack_ip = false
