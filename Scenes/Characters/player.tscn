@@ -435,7 +435,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hfkkj"]
-radius = 17.0294
+radius = 7.81025
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 3
@@ -449,10 +449,17 @@ shape = SubResource("RectangleShape2D_dqeuh")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_1i82l")
 animation = &"attack_orb"
-frame_progress = 0.866936
+frame_progress = 0.1878
 offset = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+zoom = Vector2(2, 2)
+limit_top = 73
+limit_bottom = 1580
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="MageBlast" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fe522")
