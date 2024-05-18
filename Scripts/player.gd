@@ -92,8 +92,7 @@ func play_anim(movement):
 			if attack_ip == false:
 				anim.play("back_idle")
 
-func player():
-	pass
+
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
