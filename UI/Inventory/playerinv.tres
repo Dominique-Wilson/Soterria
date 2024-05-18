@@ -1,8 +1,56 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://dl3rijv6833du"]
+[gd_resource type="Resource" script_class="Inv" load_steps=15 format=3 uid="uid://dl3rijv6833du"]
 
-[ext_resource type="Resource" uid="uid://oi53uhl2dy6i" path="res://UI/Inventory/Items/apple.tres" id="1_2rgcn"]
+[ext_resource type="Script" path="res://Inv_slot.gd" id="2_ka86d"]
 [ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="2_ti0ye"]
+
+[sub_resource type="Resource" id="Resource_3m6sj"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_db5py"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_y6wif"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_2ywyk"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_y8pde"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_h6td2"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_hutfl"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_5w8i1"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_1bx68"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_w35bp"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_62w1a"]
+script = ExtResource("2_ka86d")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_wuhy5"]
+script = ExtResource("2_ka86d")
+amount = 0
 
 [resource]
 script = ExtResource("2_ti0ye")
-items = Array[Resource("res://UI/Inventory/inventory_item.gd")]([null, ExtResource("1_2rgcn"), null, null, null, ExtResource("1_2rgcn"), null, null, null, null, null, null])
+slots = Array[ExtResource("2_ka86d")]([SubResource("Resource_3m6sj"), SubResource("Resource_db5py"), SubResource("Resource_y6wif"), SubResource("Resource_2ywyk"), SubResource("Resource_y8pde"), SubResource("Resource_h6td2"), SubResource("Resource_hutfl"), SubResource("Resource_5w8i1"), SubResource("Resource_1bx68"), SubResource("Resource_w35bp"), SubResource("Resource_62w1a"), SubResource("Resource_wuhy5")])

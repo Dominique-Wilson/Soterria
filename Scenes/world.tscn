@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cx7xaiwtga13v"]
+[gd_scene load_steps=14 format=3 uid="uid://cx7xaiwtga13v"]
 
 [ext_resource type="Texture2D" uid="uid://b5x5ilvrm4w8m" path="res://Assets/SurvivalGame/survivalgame-trees.png" id="3_5fs85"]
+[ext_resource type="PackedScene" uid="uid://bvkqmgogwsa3" path="res://Scenes/Pickable/stick_collectible.tscn" id="7_5ft84"]
 [ext_resource type="PackedScene" uid="uid://dfaqnysiel47y" path="res://Scenes/Pickable/apple_tree.tscn" id="7_ru3v8"]
 [ext_resource type="PackedScene" uid="uid://bx8kklnkrf13d" path="res://Scenes/Enemies/enemy1.tscn" id="12_2xftx"]
 [ext_resource type="Texture2D" uid="uid://d2hd60tjj3bqe" path="res://Assets/SurvivalGame/survivalgame-terrian-defult.png" id="15_mt2dy"]
@@ -732,9 +733,6 @@ layer_2/tile_data = PackedInt32Array(-262128, 524295, 1, -196602, 1114119, 0, -3
 visible = false
 position = Vector2(580, 492)
 
-[node name="hero" parent="." instance=ExtResource("22_hecr5")]
-position = Vector2(88, 37)
-
 [node name="apple_tree" parent="." instance=ExtResource("7_ru3v8")]
 position = Vector2(-210, 408)
 
@@ -746,3 +744,15 @@ position = Vector2(397, 859)
 
 [node name="apple_tree3" parent="." instance=ExtResource("7_ru3v8")]
 position = Vector2(617, 411)
+
+[node name="stick_collectible" parent="." instance=ExtResource("7_5ft84")]
+position = Vector2(262, 23)
+
+[node name="stick_collectible2" parent="." instance=ExtResource("7_5ft84")]
+position = Vector2(302, -45)
+
+[node name="stick_collectible3" parent="." instance=ExtResource("7_5ft84")]
+position = Vector2(230, -33)
+
+[node name="hero" parent="." instance=ExtResource("22_hecr5")]
+position = Vector2(88, 37)

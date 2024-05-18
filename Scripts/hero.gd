@@ -44,3 +44,7 @@ func play_anim(dir):
 
 func player():
 	pass
+
+#Collect pickable item by calling this f(x) for items picked
+func collect(item):
+	inv.insert(item)  #called from export var
