@@ -3,7 +3,7 @@ extends Node2D
 var state = "no_apples"
 var player_in_area = false
 
-var apple = preload("res://Scenes/Pickable/apple_collectible.tscn")
+var apple = preload("res://Scenes/Pickable/apple_collectable.tscn")
 
 #what collectable does apple tree drop that is assigned 'item'?
 @export var item: InvItem  #define item's resource

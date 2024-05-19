@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cxj8svotc2uif"]
+
+[ext_resource type="Script" path="res://UI/Inventory/inventory_item.gd" id="1_vptpi"]
+[ext_resource type="Texture2D" uid="uid://cucnjm1qhmjs3" path="res://Assets/PirateStuff/Treasure Hunters/Pirate Treasure/Sprites/Green Diamond/01.png" id="2_nvp2w"]
+
+[resource]
+script = ExtResource("1_vptpi")
+name = "peridot"
+texture = ExtResource("2_nvp2w")

@@ -17,7 +17,6 @@ var mouse_loc_from_player = null
 func _physics_process(delta):
 	#how far mouse is from player
 	mouse_loc_from_player = get_global_mouse_position() - self.position
-	print(mouse_loc_from_player)
 	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction.x == 0 and direction.y == 0:

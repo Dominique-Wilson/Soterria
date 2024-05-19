@@ -1,0 +1,140 @@
+[gd_scene load_steps=17 format=3 uid="uid://btcsg8erypx1k"]
+
+[ext_resource type="Script" path="res://Scenes/NPCs/npc_elfarchmage.gd" id="1_uisrm"]
+[ext_resource type="Texture2D" uid="uid://bcxrw1xbgn0u2" path="res://Assets/PlayerSprites/Mage-Idle-Walk.png" id="2_mfu42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfa08"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckc8w"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqi2v"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydrvg"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8akor"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idvsp"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dpv3"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te5yq"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14uok"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihoui"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f84vx"]
+atlas = ExtResource("2_mfu42")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t6ro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfa08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckc8w")
+}],
+"loop": true,
+"name": &"e_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqi2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydrvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8akor")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idvsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dpv3")
+}],
+"loop": true,
+"name": &"n_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te5yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14uok")
+}],
+"loop": true,
+"name": &"s_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihoui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f84vx")
+}],
+"loop": true,
+"name": &"w_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uh5sp"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqhb6"]
+radius = 41.0488
+
+[node name="npc_elfarchmage" type="CharacterBody2D"]
+script = ExtResource("1_uisrm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1t6ro")
+animation = &"idle"
+frame_progress = 0.6439
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_uh5sp")
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("CircleShape2D_dqhb6")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

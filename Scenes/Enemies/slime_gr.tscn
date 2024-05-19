@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bsq3wwjgplnqi"]
+[gd_scene load_steps=28 format=3 uid="uid://bsq3wwjgplnqi"]
 
 [ext_resource type="Script" path="res://Scripts/slime_gr.gd" id="1_ewnga"]
+[ext_resource type="Resource" uid="uid://cxj8svotc2uif" path="res://UI/Inventory/Items/peridot.tres" id="2_jarkn"]
 [ext_resource type="Texture2D" uid="uid://bj8h0onscd4i0" path="res://Assets/SurvivalGame/survivalgame-enemy-slime.png" id="2_stp3u"]
+[ext_resource type="PackedScene" uid="uid://crnrrh4tppvff" path="res://Scenes/Pickable/slime_collectable.tscn" id="4_0syq8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1r6et"]
 atlas = ExtResource("2_stp3u")
@@ -105,7 +107,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wbrbx")
 }],
-"loop": false,
+"loop": true,
 "name": &"death",
 "speed": 9.0
 }, {
@@ -150,20 +152,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnghm"]
 radius = 5.09902
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s5c46"]
-radius = 6.08276
+[sub_resource type="CircleShape2D" id="CircleShape2D_t585d"]
+radius = 7.07107
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6e3ko"]
-radius = 62.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3gyb"]
+radius = 53.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubbs0"]
+radius = 697.232
 
 [node name="slime_gr" type="CharacterBody2D"]
 script = ExtResource("1_ewnga")
+itemRes = ExtResource("2_jarkn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qxswy")
-animation = &"death"
-frame = 8
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -171,18 +175,26 @@ shape = SubResource("CircleShape2D_wnghm")
 
 [node name="hitbox" type="Area2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_s5c46")
+shape = SubResource("CircleShape2D_t585d")
 
 [node name="detection_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_w3gyb")
+
+[node name="slime_collectable" parent="." instance=ExtResource("4_0syq8")]
+visible = false
 position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_6e3ko")
+
+[node name="gem_collect_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gem_collect_area"]
+shape = SubResource("CircleShape2D_ubbs0")
+disabled = true
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="gem_collect_area" to="." method="_on_gem_collect_area_body_entered"]
