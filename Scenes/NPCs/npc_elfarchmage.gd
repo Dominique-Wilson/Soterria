@@ -61,7 +61,9 @@ func choose(array):
 
 func move(delta):
 	if !is_chatting:
-		position += dir * speed * delta
+		#position += dir * speed * delta
+		velocity = dir * speed
+		move_and_slide()
 
 func _on_chat_detection_area_body_entered(body):
 	if body.has_method("player"):
