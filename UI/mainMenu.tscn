@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0amr2drmqj0g"]
+[gd_scene load_steps=7 format=3 uid="uid://b0amr2drmqj0g"]
 
-[ext_resource type="Texture2D" uid="uid://b6phydeggkg" path="res://Assets/Texture/TX Tileset Grass.png" id="1_ldf57"]
 [ext_resource type="Script" path="res://UI/mainMenu.gd" id="1_mrpjr"]
+[ext_resource type="Texture2D" uid="uid://b88kc7l1wrtmy" path="res://Assets/Mideval/UI/Buttons/Button_Blue_9Slides_Pressed.png" id="2_30xbu"]
+[ext_resource type="Texture2D" uid="uid://cw45lh33l645l" path="res://Assets/Mideval/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_37rj5"]
+[ext_resource type="Texture2D" uid="uid://fcqk5ifij4ly" path="res://Assets/Mideval/Deco/17.png" id="4_qird7"]
 
 [sub_resource type="SystemFont" id="SystemFont_0otn7"]
 font_names = PackedStringArray("Candara")
@@ -26,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ldf57")
+texture = ExtResource("2_30xbu")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -45,6 +47,11 @@ layout_mode = 2
 theme_override_constants/separation = 60
 
 [node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -74,21 +81,75 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="start_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+theme_override_fonts/font = SubResource("SystemFont_kspl0")
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+icon = ExtResource("3_37rj5")
+flat = true
+icon_alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/start_button"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -60.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="start_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 32)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_kspl0")
-theme_override_font_sizes/font_size = 24
-text = "Start Game"
+texture = ExtResource("4_qird7")
+flip_h = true
 
-[node name="exit_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "CONTROLS
+Walk: WASD/Arrows
+Equip Weapon: e
+Attack: L Mouse
+Inventory: i
+Chat: c
+Quest: q"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="exit_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_kspl0")
 theme_override_font_sizes/font_size = 24
 text = "Exit Game"
+icon = ExtResource("3_37rj5")
+flat = true
+icon_alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2/exit_button"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -60.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
