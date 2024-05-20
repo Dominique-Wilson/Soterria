@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://btcsg8erypx1k"]
+[gd_scene load_steps=19 format=3 uid="uid://btcsg8erypx1k"]
 
 [ext_resource type="Script" path="res://Scenes/NPCs/npc_elfarchmage.gd" id="1_uisrm"]
 [ext_resource type="Texture2D" uid="uid://bcxrw1xbgn0u2" path="res://Assets/PlayerSprites/Mage-Idle-Walk.png" id="2_mfu42"]
+[ext_resource type="PackedScene" uid="uid://qlrtbnj4v020" path="res://UI/Dialogue/first_dialogue.tscn" id="3_qt1af"]
+[ext_resource type="PackedScene" uid="uid://3alikpojdosu" path="res://Scenes/Quests/npc_1_quest.tscn" id="4_s1ahb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfa08"]
 atlas = ExtResource("2_mfu42")
@@ -109,8 +111,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uh5sp"]
-radius = 5.0
-height = 12.0
+radius = 8.0
+height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqhb6"]
 radius = 41.0488
@@ -119,9 +121,10 @@ radius = 41.0488
 script = ExtResource("1_uisrm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_1t6ro")
 animation = &"idle"
-frame_progress = 0.6439
+frame_progress = 0.247353
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
@@ -135,6 +138,12 @@ shape = SubResource("CircleShape2D_dqhb6")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="first_dialogue" parent="." instance=ExtResource("3_qt1af")]
+
+[node name="npc1_quest" parent="." instance=ExtResource("4_s1ahb")]
+
 [connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
 [connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_finished" from="first_dialogue" to="." method="_on_first_dialogue_dialogue_finished"]
+[connection signal="quest_menu_closed" from="npc1_quest" to="." method="_on_npc_1_quest_quest_menu_closed"]

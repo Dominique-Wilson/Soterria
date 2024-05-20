@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
-var speed = 100
+#signals for quest completion
+signal stick_collected
+signal peridot_collected
+signal apple_collected
 
+var speed = 100
 var player_state
 
 #Inventory
@@ -101,3 +105,9 @@ func player():
 #Collect pickable item by calling this f(x) for items picked
 func collect(item):
 	inv.insert(item)  #called from export var
+	if str(item) == "<Resource#-9223372009038150425>": #stick
+		emit_signal("stick_collected")
+	if str(item) == "<Resource#-9223372006605454078>": #peridot
+		emit_signal("peridot_collected")
+	if str(item) =="<Resource#-9223372007662418709>": #apple
+		emit_signal("apple_collected")

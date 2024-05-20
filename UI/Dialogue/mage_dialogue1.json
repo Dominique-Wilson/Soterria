@@ -1,0 +1,12 @@
+[
+	{"name": "Mage", "text": "Alas Anakithar! You have returned to us just as fortold by the Old Ones!"},
+	{"name": "Zelurah", "text": "No. I'm just a traveler passing through, but the path is blocked."},
+	{"name": "Mage", "text": "Ah. So you have lost your way then, Anakithar?"},
+	{"name": "Zelurah", "text": "I am not lost and stop calling me that! Nevermind, I'll just..."},
+	{"name": "Mage", "text": "Patience, Zelurah! Use your powers to clear the road."},
+	{"name": "Zelurah", "text": "Huh? Wait! How do you know my name and what powers?!"},
+	{"name": "Mage", "text": "Oh how you have forgotten The Way, Anakithar! I can teach you a spell to clear blocked roads, but you'll need your wand."},
+	{"name": "Zelurah", "text": "I don't have a wand. Where am I supposed to find that?"},
+	{"name": "Mage", "text": "By sticks and stones, The Way is shown. Remember the wand and see beyond."},
+	{"name": "Zelurah", "text": "What the heck is that supposed to mean?!"}
+]

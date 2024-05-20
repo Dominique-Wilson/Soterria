@@ -45,7 +45,12 @@ func _process(delta):
 			MOVE:
 				move(delta)
 	if Input.is_action_just_pressed("chat"):
-		print("chatting with npc")
+		$first_dialogue.start()
+		is_roaming = false
+		is_chatting = true
+		$AnimatedSprite2D.play("idle")
+	if Input.is_action_just_pressed("quest"):
+		$npc1_quest.next_quest()
 		is_roaming = false
 		is_chatting = true
 		$AnimatedSprite2D.play("idle")
@@ -70,3 +75,20 @@ func _on_chat_detection_area_body_exited(body):
 func _on_timer_timeout():
 	$Timer.wait_time = choose([0.5, 1, 1.5])
 	current_state = choose([IDLE, NEW_DIR, MOVE])
+
+
+func _on_first_dialogue_dialogue_finished():
+	is_chatting = false
+	is_roaming = true
+
+
+func _on_npc_1_quest_quest_menu_closed():
+	is_chatting = false
+	is_roaming = true
+
+
+func _on_hero_stick_collected():
+	$npc1_quest.stick_collected()
+
+func _on_hero_peridot_collected():
+	$npc1_quest.peridot_collected()
