@@ -124,7 +124,7 @@ offset_right = 214.0
 offset_bottom = 78.0
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/normal_font_size = 13
-text = "Well done, my friend!"
+text = "Well done, my friend! Use this wisely."
 
 [connection signal="pressed" from="quest1_ui/yesButton1" to="." method="_on_yes_button_1_pressed"]
 [connection signal="pressed" from="quest1_ui/noButton2" to="." method="_on_no_button_2_pressed"]
