@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx7xaiwtga13v"]
+[gd_scene load_steps=13 format=3 uid="uid://cx7xaiwtga13v"]
 
 [ext_resource type="TileSet" uid="uid://rcea7x0i4vnm" path="res://Scenes/Tileset/world_tiles.tres" id="1_e4ft1"]
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_opksg"]
 [ext_resource type="PackedScene" uid="uid://bvkqmgogwsa3" path="res://Scenes/Pickable/stick_collectable.tscn" id="7_21g7y"]
 [ext_resource type="PackedScene" uid="uid://dfaqnysiel47y" path="res://Scenes/Pickable/apple_tree.tscn" id="7_ru3v8"]
 [ext_resource type="PackedScene" uid="uid://bsq3wwjgplnqi" path="res://Scenes/Enemies/slime_gr.tscn" id="9_n3kay"]
+[ext_resource type="PackedScene" uid="uid://xffr0vrg3ng" path="res://Scenes/world_3.tscn" id="10_jogfs"]
+[ext_resource type="PackedScene" uid="uid://dkjlw0ndk0tsj" path="res://Scenes/cliffside.tscn" id="10_mb6q1"]
 [ext_resource type="PackedScene" uid="uid://btcsg8erypx1k" path="res://Scenes/NPCs/npc_elfarchmage.tscn" id="10_s2pmv"]
 [ext_resource type="PackedScene" uid="uid://ci4sdqkqk6ggv" path="res://Scenes/Pickable/wand_collectable.tscn" id="11_tyivl"]
 [ext_resource type="PackedScene" uid="uid://bx8kklnkrf13d" path="res://Scenes/Enemies/enemy1.tscn" id="12_2xftx"]
 [ext_resource type="PackedScene" uid="uid://boxuh2ti5iupv" path="res://Scenes/Characters/hero.tscn" id="22_hecr5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdesq"]
+size = Vector2(57, 49)
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_opksg")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -36,13 +43,13 @@ position = Vector2(368, 204)
 position = Vector2(718, 251)
 
 [node name="apple_tree4" parent="." instance=ExtResource("7_ru3v8")]
-position = Vector2(971, 403)
+position = Vector2(24, 802)
 
 [node name="apple_tree2" parent="." instance=ExtResource("7_ru3v8")]
 position = Vector2(218, -260)
 
 [node name="apple_tree3" parent="." instance=ExtResource("7_ru3v8")]
-position = Vector2(-203, 409)
+position = Vector2(1032, 1092)
 
 [node name="stick_collectable" parent="." instance=ExtResource("7_21g7y")]
 position = Vector2(436, 223)
@@ -81,5 +88,17 @@ position = Vector2(221, 141)
 [node name="wand_collectable" parent="." instance=ExtResource("11_tyivl")]
 position = Vector2(504, 181)
 
+[node name="world_3" parent="." instance=ExtResource("10_jogfs")]
+
+[node name="cliffside" parent="." instance=ExtResource("10_mb6q1")]
+
+[node name="cliffside_transition_point" type="Area2D" parent="cliffside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside/cliffside_transition_point"]
+position = Vector2(-167.5, 503.5)
+shape = SubResource("RectangleShape2D_gdesq")
+
 [connection signal="peridot_collected" from="hero" to="npc_elfarchmage" method="_on_hero_peridot_collected"]
 [connection signal="stick_collected" from="hero" to="npc_elfarchmage" method="_on_hero_stick_collected"]
+[connection signal="body_entered" from="cliffside/cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
+[connection signal="body_exited" from="cliffside/cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

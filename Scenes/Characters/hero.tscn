@@ -484,3 +484,11 @@ offset_right = 41.0
 offset_bottom = -41.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="cliffside_camera" type="Camera2D" parent="."]
+position = Vector2(15, 47)
+zoom = Vector2(2.5, 2.5)
+limit_left = -307
+limit_top = 479
+limit_right = 1968
+limit_bottom = 1235

@@ -19,6 +19,7 @@ var mouse_loc_from_player = null
 
 
 func _physics_process(delta):
+	current_camera()
 	#how far mouse is from player
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	
@@ -111,3 +112,11 @@ func collect(item):
 		emit_signal("peridot_collected")
 	if str(item) =="<Resource#-9223372007662418709>": #apple
 		emit_signal("apple_collected")
+
+func current_camera():
+	if global.current_scene == "world":
+		$Camera2D.enabled = true
+		$cliffside_camera.enabled = false
+	elif global.current_scene == "cliffside":
+		$Camera2D.enabled = false
+		$cliffside_camera.enabled = true
