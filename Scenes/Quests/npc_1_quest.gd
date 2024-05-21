@@ -1,5 +1,6 @@
 extends Control
 
+signal quest1_complete
 signal quest_menu_closed
 
 var quest1_active = false
@@ -9,10 +10,11 @@ var peridot = 0
 
 func _process(delta):
 	if quest1_active:
-		if stick == 3 and peridot == 3:
+		if stick == 3 and peridot >= 3:
 			quest1_active = false
 			quest1_completed = true
 			play_finish_quest_anim()
+			emit_signal("quest1_complete")
 	#if quest2_active...
 
 func quest1_chat():

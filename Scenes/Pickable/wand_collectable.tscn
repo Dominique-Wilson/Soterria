@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci4sdqkqk6ggv"]
+
+[ext_resource type="Script" path="res://Scenes/Pickable/wand_collectable.gd" id="1_1w2ti"]
+[ext_resource type="Texture2D" uid="uid://cjrdh7v5qek1g" path="res://Assets/SurvivalGame/peridot_wand.png.png" id="1_1y6hh"]
+[ext_resource type="Resource" uid="uid://bwlmqf23x2oi" path="res://UI/Inventory/Items/peridot_wand.tres" id="2_hwho5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbdal"]
+radius = 19.0263
+
+[node name="wand_collectable" type="StaticBody2D"]
+script = ExtResource("1_1w2ti")
+item = ExtResource("2_hwho5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1y6hh")
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_vbdal")
+
+[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]

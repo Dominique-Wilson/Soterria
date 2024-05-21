@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bwlmqf23x2oi"]
+
+[ext_resource type="Script" path="res://UI/Inventory/inventory_item.gd" id="1_v0b0l"]
+[ext_resource type="Texture2D" uid="uid://cjrdh7v5qek1g" path="res://Assets/SurvivalGame/peridot_wand.png.png" id="2_bl06r"]
+
+[resource]
+script = ExtResource("1_v0b0l")
+name = "peridot_wand"
+texture = ExtResource("2_bl06r")

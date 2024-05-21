@@ -2,7 +2,7 @@ class_name MainMenu
 extends Control
 
 @onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/start_button as Button
-@onready var exit_button = $MarginContainer/HBoxContainer/VBoxContainer/exit_button as Button
+@onready var exit_button = $MarginContainer/HBoxContainer/VBoxContainer2/exit_button as Button
 @export var starting_level = preload("res://Scenes/world.tscn") as PackedScene
 
 func _ready():
